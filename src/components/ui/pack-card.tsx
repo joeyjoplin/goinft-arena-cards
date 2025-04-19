@@ -71,7 +71,7 @@ export function PackCard({
           <h3 className="text-white font-orbitron text-xl font-bold">{name}</h3>
           <p className="text-white/70 text-sm mt-1">{description}</p>
           <div className="text-white mt-3 text-sm">
-            Contains {cardsCount} NFT cards
+            Contém {cardsCount} cartas NFT
           </div>
         </div>
         
@@ -79,7 +79,7 @@ export function PackCard({
           className="w-full bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 font-orbitron text-lg py-6"
           onClick={onClick}
         >
-          Buy for {price} CHZ
+          Compre por {price} CHZ
         </Button>
       </div>
     </Card>
