@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AlbumCard } from "@/components/ui/album-card";
 import { NFTCard } from "@/components/ui/nft-card";
@@ -8,40 +7,40 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const albums = [
   {
     id: "1",
-    name: "World Cup 2026",
-    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=WorldCup2026",
+    name: "Paulista Feminino 2025",
+    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=PaulistaFeminino",
     progress: 35,
     totalCards: 32,
     collectedCards: 11,
   },
   {
     id: "2",
-    name: "Champions League",
-    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=ChampionsLeague",
+    name: "Copa do Brasil 2000",
+    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=CopaDoBrasil",
     progress: 20,
     totalCards: 40,
     collectedCards: 8,
   },
   {
     id: "3",
-    name: "Premier League",
-    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=PremierLeague",
+    name: "Sulamericana 2025",
+    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=Sulamericana",
     progress: 45,
     totalCards: 30,
     collectedCards: 13,
   },
   {
     id: "4",
-    name: "Football Legends",
-    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=FootballLegends",
+    name: "Lendas do Futebol Feminino",
+    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=LendasFeminino",
     progress: 10,
     totalCards: 25,
     collectedCards: 2,
   },
   {
     id: "5",
-    name: "Copa América",
-    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=CopaAmerica",
+    name: "Copa São Paulo 2025",
+    coverImage: "https://placehold.co/800x600/1a1f2c/ffffff?text=CopaSaoPaulo",
     progress: 0,
     totalCards: 28,
     collectedCards: 0,
@@ -144,21 +143,21 @@ const Albums = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-white font-orbitron text-3xl font-bold">
-              {selectedAlbum ? "Album View" : "My Albums"}
+              {selectedAlbum ? "Visualizar Álbum" : "Meus Álbuns"}
             </h1>
             
             <TabsList className="bg-goinft-card">
               {selectedAlbum && (
                 <TabsTrigger value="all-albums" onClick={handleBackToAlbums}>
-                  All Albums
+                  Todos os Álbuns
                 </TabsTrigger>
               )}
               <TabsTrigger value="album-view">
-                {selectedAlbum ? "Card View" : "Albums"}
+                {selectedAlbum ? "Ver Cards" : "Álbuns"}
               </TabsTrigger>
               {selectedAlbum && (
                 <TabsTrigger value="album-progress">
-                  Progress
+                  Progresso
                 </TabsTrigger>
               )}
             </TabsList>
@@ -196,28 +195,28 @@ const Albums = () => {
                       
                       <div className="grid grid-cols-2 gap-4 text-white/70 mb-4">
                         <div>
-                          <span className="block text-sm">Total Cards</span>
+                          <span className="block text-sm">Total de Cards</span>
                           <span className="block text-xl font-bold text-white">
                             {albums.find(a => a.id === selectedAlbum)?.totalCards}
                           </span>
                         </div>
                         
                         <div>
-                          <span className="block text-sm">Collected</span>
+                          <span className="block text-sm">Colecionados</span>
                           <span className="block text-xl font-bold text-white">
                             {albums.find(a => a.id === selectedAlbum)?.collectedCards}
                           </span>
                         </div>
                         
                         <div>
-                          <span className="block text-sm">Progress</span>
+                          <span className="block text-sm">Progresso</span>
                           <span className="block text-xl font-bold text-white">
                             {Math.round(albums.find(a => a.id === selectedAlbum)?.progress || 0)}%
                           </span>
                         </div>
                         
                         <div>
-                          <span className="block text-sm">Missing</span>
+                          <span className="block text-sm">Faltando</span>
                           <span className="block text-xl font-bold text-white">
                             {(albums.find(a => a.id === selectedAlbum)?.totalCards || 0) - 
                              (albums.find(a => a.id === selectedAlbum)?.collectedCards || 0)}
@@ -233,26 +232,25 @@ const Albums = () => {
                       </div>
                       
                       <p className="text-white/70 mb-4">
-                        Complete this album to earn exclusive rewards and achievements!
+                        Complete este álbum para ganhar recompensas e conquistas exclusivas!
                       </p>
                     </div>
                   </div>
                 </div>
                 
-                <h3 className="text-white font-orbitron text-xl font-bold mb-4">Album Cards</h3>
+                <h3 className="text-white font-orbitron text-xl font-bold mb-4">Cards do Álbum</h3>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {worldCupCards.map((card) => (
                     <NFTCard key={card.id} {...card} />
                   ))}
                   
-                  {/* Empty card slots */}
                   {Array.from({ length: 4 }).map((_, index) => (
                     <div 
                       key={`empty-${index}`} 
                       className="aspect-[3/4] rounded-xl border-2 border-dashed border-goinft-light/30 bg-goinft-card/50 flex items-center justify-center"
                     >
-                      <span className="text-white/30 font-orbitron">Empty Slot</span>
+                      <span className="text-white/30 font-orbitron">Espaço Vazio</span>
                     </div>
                   ))}
                 </div>
@@ -274,13 +272,13 @@ const Albums = () => {
             {selectedAlbum && (
               <div className="bg-goinft-card rounded-xl p-6">
                 <h3 className="text-white font-orbitron text-xl font-bold mb-6">
-                  Album Completion Progress
+                  Progresso de Conclusão do Álbum
                 </h3>
                 
                 <div className="space-y-6">
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-white font-medium">Common Cards</span>
+                      <span className="text-white font-medium">Cards Comuns</span>
                       <span className="text-white/70">8/12</span>
                     </div>
                     <div className="w-full bg-goinft-darker rounded-full h-2.5">
@@ -290,7 +288,7 @@ const Albums = () => {
                   
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-white font-medium">Rare Cards</span>
+                      <span className="text-white font-medium">Cards Raros</span>
                       <span className="text-white/70">3/10</span>
                     </div>
                     <div className="w-full bg-goinft-darker rounded-full h-2.5">
@@ -300,7 +298,7 @@ const Albums = () => {
                   
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-white font-medium">Epic Cards</span>
+                      <span className="text-white font-medium">Cards Épicos</span>
                       <span className="text-white/70">2/7</span>
                     </div>
                     <div className="w-full bg-goinft-darker rounded-full h-2.5">
@@ -310,7 +308,7 @@ const Albums = () => {
                   
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-white font-medium">Legendary Cards</span>
+                      <span className="text-white font-medium">Cards Lendários</span>
                       <span className="text-white/70">1/3</span>
                     </div>
                     <div className="w-full bg-goinft-darker rounded-full h-2.5">
@@ -320,19 +318,19 @@ const Albums = () => {
                 </div>
                 
                 <div className="mt-8 p-4 bg-goinft-light/20 rounded-lg border border-neon-purple/30">
-                  <h4 className="text-white font-orbitron font-bold mb-2">Album Rewards</h4>
+                  <h4 className="text-white font-orbitron font-bold mb-2">Recompensas do Álbum</h4>
                   <ul className="space-y-2 text-white/70">
                     <li className="flex items-center">
-                      <span className="w-24">50% Complete</span>
-                      <span className="ml-2 px-2 py-0.5 rounded bg-goinft-card text-xs">Special Card</span>
+                      <span className="w-24">50% Completo</span>
+                      <span className="ml-2 px-2 py-0.5 rounded bg-goinft-card text-xs">Card Especial</span>
                     </li>
                     <li className="flex items-center">
-                      <span className="w-24">75% Complete</span>
+                      <span className="w-24">75% Completo</span>
                       <span className="ml-2 px-2 py-0.5 rounded bg-goinft-card text-xs">10 CHZ Tokens</span>
                     </li>
                     <li className="flex items-center">
-                      <span className="w-24">100% Complete</span>
-                      <span className="ml-2 px-2 py-0.5 rounded bg-goinft-card text-xs">Exclusive NFT</span>
+                      <span className="w-24">100% Completo</span>
+                      <span className="ml-2 px-2 py-0.5 rounded bg-goinft-card text-xs">NFT Exclusivo</span>
                     </li>
                   </ul>
                 </div>
