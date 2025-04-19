@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -84,21 +83,31 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-goinft-dark pb-16">
       {/* Hero Banner */}
-      <div className="relative h-64 bg-gradient-to-r from-goinft-darker to-goinft-dark overflow-hidden">
+      <div className="relative h-[420px] bg-gradient-to-r from-goinft-darker to-goinft-dark overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-neon-purple/30 filter blur-3xl"></div>
           <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-neon-pink/30 filter blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-4 h-full flex flex-col justify-center">
-          <h1 className="text-white font-orbitron text-3xl font-bold mb-2">Bem-vindo ao GoINFT</h1>
-          <p className="text-white/70 text-lg max-w-xl">
-            Comece a colecionar cartões digitais de futebol e complete seus álbuns!
-          </p>
-          
-          <div className="mt-6 inline-flex items-center gap-4 bg-goinft-card/50 backdrop-blur-sm rounded-lg py-2 px-4 border border-goinft-light/30 text-white">
-            <span className="font-orbitron">Saldo da Carteira:</span>
-            <span className="font-bold">{walletBalance} CHZ</span>
+        <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between gap-8 py-12">
+          <div className="flex-1">
+            <h1 className="text-white font-orbitron text-4xl font-bold mb-4">Bem-vindo ao GoINFT</h1>
+            <p className="text-white/70 text-lg max-w-xl mb-6">
+              Comece a colecionar cartões digitais de futebol e complete seus álbuns!
+            </p>
+            
+            <div className="inline-flex items-center gap-4 bg-goinft-card/50 backdrop-blur-sm rounded-lg py-2 px-4 border border-goinft-light/30 text-white">
+              <span className="font-orbitron">Saldo da Carteira:</span>
+              <span className="font-bold">{walletBalance} CHZ</span>
+            </div>
+          </div>
+
+          <div className="relative w-full md:w-[500px] h-[300px]">
+            <img
+              src="/lovable-uploads/8b42a4aa-6e29-46c0-a04e-60ebfa0b064c.png"
+              alt="NFT Cards Collection"
+              className="w-full h-full object-contain animate-float"
+            />
           </div>
         </div>
       </div>
