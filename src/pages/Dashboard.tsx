@@ -91,13 +91,13 @@ const Dashboard = () => {
         </div>
         
         <div className="container mx-auto px-4 h-full flex flex-col justify-center">
-          <h1 className="text-white font-orbitron text-3xl font-bold mb-2">Welcome to GoINFT</h1>
+          <h1 className="text-white font-orbitron text-3xl font-bold mb-2">Bem-vindo ao GoINFT</h1>
           <p className="text-white/70 text-lg max-w-xl">
-            Start collecting digital football cards and complete your albums!
+            Comece a colecionar cartões digitais de futebol e complete seus álbuns!
           </p>
           
           <div className="mt-6 inline-flex items-center gap-4 bg-goinft-card/50 backdrop-blur-sm rounded-lg py-2 px-4 border border-goinft-light/30 text-white">
-            <span className="font-orbitron">Wallet Balance:</span>
+            <span className="font-orbitron">Saldo da Carteira:</span>
             <span className="font-bold">{walletBalance} CHZ</span>
           </div>
         </div>
@@ -107,42 +107,42 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 -mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <Link to="/albums" className="bg-goinft-card rounded-xl p-6 text-center hover:bg-goinft-light/20 transition-colors">
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">My Albums</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Meus Álbuns</h3>
             <p className="text-white/70 text-sm mb-4">
-              View and complete your album collections
+              Visualize e complete suas coleções de álbuns
             </p>
             <Button variant="outline" className="border-neon-purple text-white">
-              View Albums
+              Ver Álbuns
             </Button>
           </Link>
           
           <Link to="/marketplace" className="bg-goinft-card rounded-xl p-6 text-center hover:bg-goinft-light/20 transition-colors">
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Marketplace</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Mercado</h3>
             <p className="text-white/70 text-sm mb-4">
-              Buy, sell, and trade cards with others
+              Compre, venda e troque cartas com outros
             </p>
             <Button variant="outline" className="border-neon-purple text-white">
-              Go to Market
+              Ir para o Mercado
             </Button>
           </Link>
           
           <Link to="/packs" className="bg-goinft-card rounded-xl p-6 text-center hover:bg-goinft-light/20 transition-colors">
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Buy Packs</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Comprar Pacotes</h3>
             <p className="text-white/70 text-sm mb-4">
-              Get new cards to expand your collection
+              Obtenha novas cartas para expandir sua coleção
             </p>
             <Button variant="outline" className="border-neon-purple text-white">
-              Shop Packs
+              Comprar Pacotes
             </Button>
           </Link>
           
           <Link to="/profile" className="bg-goinft-card rounded-xl p-6 text-center hover:bg-goinft-light/20 transition-colors">
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">My Profile</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Meu Perfil</h3>
             <p className="text-white/70 text-sm mb-4">
-              View your stats and collection progress
+              Visualize suas estatísticas e progresso da coleção
             </p>
             <Button variant="outline" className="border-neon-purple text-white">
-              View Profile
+              Ver Perfil
             </Button>
           </Link>
         </div>
@@ -150,9 +150,9 @@ const Dashboard = () => {
         {/* Recent NFTs */}
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-white font-orbitron text-2xl font-bold">Recent Additions</h2>
+            <h2 className="text-white font-orbitron text-2xl font-bold">Adições Recentes</h2>
             <Link to="/collection" className="text-neon-purple flex items-center font-orbitron text-sm">
-              View All <ArrowRight className="ml-1 h-4 w-4" />
+              Ver Todos <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
           
@@ -166,9 +166,9 @@ const Dashboard = () => {
         {/* Featured Albums */}
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-white font-orbitron text-2xl font-bold">Featured Albums</h2>
+            <h2 className="text-white font-orbitron text-2xl font-bold">Álbuns em Destaque</h2>
             <Link to="/albums" className="text-neon-purple flex items-center font-orbitron text-sm">
-              View All <ArrowRight className="ml-1 h-4 w-4" />
+              Ver Todos <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
           
@@ -182,9 +182,9 @@ const Dashboard = () => {
         {/* Featured Packs */}
         <section>
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-white font-orbitron text-2xl font-bold">Featured Packs</h2>
+            <h2 className="text-white font-orbitron text-2xl font-bold">Pacotes em Destaque</h2>
             <Link to="/packs" className="text-neon-purple flex items-center font-orbitron text-sm">
-              View All <ArrowRight className="ml-1 h-4 w-4" />
+              Ver Todos <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
           
