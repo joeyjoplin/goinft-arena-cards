@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { NFTCard } from "@/components/ui/nft-card";
 import { Button } from "@/components/ui/button";
@@ -8,124 +7,122 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Search, Filter } from "lucide-react";
 
-// Mock data for marketplace
 const marketplaceCards = [
   {
     id: "m1",
-    name: "Lionel Messi",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Messi",
+    name: "Ana Silva",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=AnaSilva",
     rarity: "legendary" as const,
-    team: "Argentina",
-    position: "Forward",
+    team: "São Paulo FC",
+    position: "Atacante",
     price: 100,
   },
   {
     id: "m2",
-    name: "Cristiano Ronaldo",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Ronaldo",
+    name: "Carlos Santos",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=CarlosSantos",
     rarity: "epic" as const,
-    team: "Portugal",
-    position: "Forward",
+    team: "Palmeiras",
+    position: "Atacante",
     price: 75,
   },
   {
     id: "m3",
-    name: "Kylian Mbappé",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Mbappe",
+    name: "Beatriz Oliveira",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=BeatrizOliveira",
     rarity: "rare" as const,
-    team: "France",
-    position: "Forward",
+    team: "Corinthians",
+    position: "Atacante",
     price: 50,
   },
   {
     id: "m4",
-    name: "Neymar Jr",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Neymar",
+    name: "Pedro Costa",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=PedroCosta",
     rarity: "epic" as const,
-    team: "Brazil",
-    position: "Forward",
+    team: "Santos FC",
+    position: "Atacante",
     price: 60,
   },
   {
     id: "m5",
-    name: "Kevin De Bruyne",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=DeBruyne",
+    name: "Marina Lima",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=MarinaLima",
     rarity: "rare" as const,
-    team: "Belgium",
-    position: "Midfielder",
+    team: "Ferroviária",
+    position: "Meio-Campo",
     price: 45,
   },
   {
     id: "m6",
-    name: "Virgil van Dijk",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=VanDijk",
+    name: "Lucas Pereira",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=LucasPereira",
     rarity: "rare" as const,
-    team: "Netherlands",
-    position: "Defender",
+    team: "Internacional",
+    position: "Defensor",
     price: 40,
   },
   {
     id: "m7",
-    name: "Robert Lewandowski",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Lewandowski",
+    name: "Carolina Souza",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=CarolinaSouza",
     rarity: "rare" as const,
-    team: "Poland",
-    position: "Forward",
+    team: "Cruzeiro",
+    position: "Atacante",
     price: 35,
   },
   {
     id: "m8",
-    name: "Luka Modric",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Modric",
+    name: "Roberto Almeida",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=RobertoAlmeida",
     rarity: "epic" as const,
-    team: "Croatia",
-    position: "Midfielder",
+    team: "Flamengo",
+    position: "Meio-Campo",
     price: 55,
   },
 ];
 
-// Mock data for own cards for trading
 const ownedCards = [
   {
     id: "o1",
-    name: "Erling Haaland",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Haaland",
+    name: "Julia Santos",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=JuliaSantos",
     rarity: "rare" as const,
-    team: "Norway",
-    position: "Forward",
+    team: "Palmeiras",
+    position: "Atacante",
     isOwned: true,
   },
   {
     id: "o2",
-    name: "Trent Alexander-Arnold",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=AlexanderArnold",
+    name: "Marcos Silva",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=MarcosSilva",
     rarity: "rare" as const,
-    team: "England",
-    position: "Defender",
+    team: "São Paulo FC",
+    position: "Defensor",
     isOwned: true,
   },
   {
     id: "o3",
-    name: "Joshua Kimmich",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Kimmich",
+    name: "Fernanda Lima",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=FernandaLima",
     rarity: "rare" as const,
-    team: "Germany",
-    position: "Midfielder",
+    team: "Santos FC",
+    position: "Meio-Campo",
     isOwned: true,
   },
   {
     id: "o4",
-    name: "Jude Bellingham",
-    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=Bellingham",
+    name: "Gabriel Costa",
+    image: "https://placehold.co/600x800/1a1f2c/ffffff?text=GabrielCosta",
     rarity: "epic" as const,
-    team: "England",
-    position: "Midfielder",
+    team: "Corinthians",
+    position: "Meio-Campo",
     isOwned: true,
   },
 ];
 
-const positions = ["Forward", "Midfielder", "Defender", "Goalkeeper"];
-const rarities = ["common", "rare", "epic", "legendary"];
+const positions = ["Atacante", "Meio-Campo", "Defensor", "Goleiro"];
+const rarities = ["comum", "raro", "épico", "lendário"];
 
 const Marketplace = () => {
   const [detailsDialogOpen, setDetailsDialogOpen] = useState(false);
@@ -163,24 +160,19 @@ const Marketplace = () => {
     }
   };
 
-  // Filter cards based on selected filters
   const filteredCards = marketplaceCards.filter(card => {
-    // Apply search query filter
     if (searchQuery && !card.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;
     }
     
-    // Apply position filter
     if (selectedPositions.length > 0 && !selectedPositions.includes(card.position)) {
       return false;
     }
     
-    // Apply rarity filter
     if (selectedRarities.length > 0 && !selectedRarities.includes(card.rarity)) {
       return false;
     }
     
-    // Apply price range filter
     if (card.price < priceRange.min || card.price > priceRange.max) {
       return false;
     }
@@ -195,17 +187,17 @@ const Marketplace = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
             <div>
               <h1 className="text-white font-orbitron text-3xl font-bold">
-                Marketplace
+                Mercado
               </h1>
               <p className="text-white/70 mt-1">
-                Buy, sell, and trade cards with other collectors
+                Compre, venda e troque cards com outros colecionadores
               </p>
             </div>
             
             <TabsList className="bg-goinft-card">
-              <TabsTrigger value="buy">Buy</TabsTrigger>
-              <TabsTrigger value="sell">Sell</TabsTrigger>
-              <TabsTrigger value="trade">Trade</TabsTrigger>
+              <TabsTrigger value="buy">Comprar</TabsTrigger>
+              <TabsTrigger value="sell">Vender</TabsTrigger>
+              <TabsTrigger value="trade">Trocar</TabsTrigger>
             </TabsList>
           </div>
           
@@ -214,7 +206,7 @@ const Marketplace = () => {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50" />
                 <Input 
-                  placeholder="Search cards..." 
+                  placeholder="Buscar cards..." 
                   className="bg-goinft-card border-none pl-10 text-white" 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -227,7 +219,7 @@ const Marketplace = () => {
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <Filter className="mr-2 h-4 w-4" />
-                Filters
+                Filtros
               </Button>
             </div>
             
@@ -235,7 +227,7 @@ const Marketplace = () => {
               <div className="mt-4 p-4 bg-goinft-card rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <Label className="text-white mb-2 block">Position</Label>
+                    <Label className="text-white mb-2 block">Posição</Label>
                     <div className="space-y-2">
                       {positions.map((position) => (
                         <div key={position} className="flex items-center">
@@ -255,7 +247,7 @@ const Marketplace = () => {
                   </div>
                   
                   <div>
-                    <Label className="text-white mb-2 block">Rarity</Label>
+                    <Label className="text-white mb-2 block">Raridade</Label>
                     <div className="space-y-2">
                       {rarities.map((rarity) => (
                         <div key={rarity} className="flex items-center">
@@ -275,19 +267,19 @@ const Marketplace = () => {
                   </div>
                   
                   <div>
-                    <Label className="text-white mb-2 block">Price Range (CHZ)</Label>
+                    <Label className="text-white mb-2 block">Faixa de Preço (CHZ)</Label>
                     <div className="flex items-center gap-2">
                       <Input
                         type="number"
-                        placeholder="Min"
+                        placeholder="Mín"
                         className="bg-goinft-light border-none text-white"
                         value={priceRange.min}
                         onChange={(e) => setPriceRange({ ...priceRange, min: Number(e.target.value) })}
                       />
-                      <span className="text-white">to</span>
+                      <span className="text-white">até</span>
                       <Input
                         type="number"
-                        placeholder="Max"
+                        placeholder="Máx"
                         className="bg-goinft-light border-none text-white"
                         value={priceRange.max}
                         onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })}
@@ -307,13 +299,13 @@ const Marketplace = () => {
                       setPriceRange({ min: 0, max: 100 });
                     }}
                   >
-                    Reset
+                    Limpar
                   </Button>
                   <Button 
                     className="bg-gradient-to-r from-neon-purple to-neon-pink text-white"
                     onClick={() => setShowFilters(false)}
                   >
-                    Apply Filters
+                    Aplicar Filtros
                   </Button>
                 </div>
               </div>
@@ -333,7 +325,7 @@ const Marketplace = () => {
             
             {filteredCards.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-white/70 text-lg">No cards found matching your filters.</p>
+                <p className="text-white/70 text-lg">Nenhum card encontrado com os filtros selecionados.</p>
                 <Button 
                   className="mt-4 bg-goinft-light text-white"
                   onClick={() => {
@@ -343,7 +335,7 @@ const Marketplace = () => {
                     setPriceRange({ min: 0, max: 100 });
                   }}
                 >
-                  Clear Filters
+                  Limpar Filtros
                 </Button>
               </div>
             )}
@@ -362,9 +354,9 @@ const Marketplace = () => {
             
             {ownedCards.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-white/70 text-lg">You don't have any cards to sell yet.</p>
+                <p className="text-white/70 text-lg">Você ainda não tem cards para vender.</p>
                 <Button className="mt-4 bg-goinft-light text-white">
-                  Buy Packs
+                  Comprar Pacotes
                 </Button>
               </div>
             )}
@@ -373,17 +365,17 @@ const Marketplace = () => {
           <TabsContent value="trade" className="mt-0">
             <div className="bg-goinft-card rounded-xl p-6 mb-6">
               <h2 className="text-white font-orbitron text-xl font-bold mb-4">
-                Trading System
+                Sistema de Trocas
               </h2>
               
               <p className="text-white/70 mb-4">
-                Trade your cards with other collectors. Find someone who has the card you need, 
-                and offer one of your cards in exchange.
+                Troque seus cards com outros colecionadores. Encontre alguém que tenha o card que você precisa 
+                e ofereça um dos seus cards em troca.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-white font-medium mb-2">Your Cards</h3>
+                  <h3 className="text-white font-medium mb-2">Seus Cards</h3>
                   <div className="bg-goinft-dark/50 p-4 rounded-lg">
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {ownedCards.slice(0, 3).map((card) => (
@@ -398,7 +390,7 @@ const Marketplace = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-white font-medium mb-2">Cards You Want</h3>
+                  <h3 className="text-white font-medium mb-2">Cards Desejados</h3>
                   <div className="bg-goinft-dark/50 p-4 rounded-lg">
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {marketplaceCards.slice(0, 3).map((card) => (
@@ -415,51 +407,51 @@ const Marketplace = () => {
               
               <div className="mt-6 flex justify-end">
                 <Button className="bg-gradient-to-r from-neon-purple to-neon-pink text-white">
-                  Propose Trade
+                  Propor Troca
                 </Button>
               </div>
             </div>
             
             <h2 className="text-white font-orbitron text-xl font-bold mb-4">
-              Open Trade Offers
+              Ofertas de Troca Abertas
             </h2>
             
             <div className="space-y-4">
               <div className="bg-goinft-card rounded-xl p-4">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-white font-orbitron">Trade #28754</span>
+                  <span className="text-white font-orbitron">Troca #28754</span>
                   <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs font-medium">
-                    Open
+                    Aberta
                   </span>
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <span className="text-white/70 block mb-2">They offer:</span>
+                    <span className="text-white/70 block mb-2">Eles oferecem:</span>
                     <div className="flex items-center space-x-2">
                       <img 
-                        src="https://placehold.co/600x800/1a1f2c/ffffff?text=Messi" 
+                        src="https://placehold.co/600x800/1a1f2c/ffffff?text=AnaSilva" 
                         alt="Card" 
                         className="w-12 h-16 rounded"
                       />
                       <div>
-                        <span className="text-white block">Lionel Messi</span>
-                        <span className="text-white/50 text-xs">Legendary</span>
+                        <span className="text-white block">Ana Silva</span>
+                        <span className="text-white/50 text-xs">Lendário</span>
                       </div>
                     </div>
                   </div>
                   
                   <div>
-                    <span className="text-white/70 block mb-2">For your:</span>
+                    <span className="text-white/70 block mb-2">Pelo seu:</span>
                     <div className="flex items-center space-x-2">
                       <img 
-                        src="https://placehold.co/600x800/1a1f2c/ffffff?text=Haaland" 
+                        src="https://placehold.co/600x800/1a1f2c/ffffff?text=JuliaSantos" 
                         alt="Card" 
                         className="w-12 h-16 rounded"
                       />
                       <div>
-                        <span className="text-white block">Erling Haaland</span>
-                        <span className="text-white/50 text-xs">Rare</span>
+                        <span className="text-white block">Julia Santos</span>
+                        <span className="text-white/50 text-xs">Raro</span>
                       </div>
                     </div>
                   </div>
@@ -467,10 +459,10 @@ const Marketplace = () => {
                 
                 <div className="mt-4 flex justify-end space-x-3">
                   <Button variant="outline" className="text-white">
-                    Decline
+                    Recusar
                   </Button>
                   <Button className="bg-gradient-to-r from-neon-purple to-neon-pink text-white">
-                    Accept
+                    Aceitar
                   </Button>
                 </div>
               </div>
@@ -479,12 +471,11 @@ const Marketplace = () => {
         </Tabs>
       </div>
       
-      {/* Card Details Dialog */}
       <Dialog open={detailsDialogOpen} onOpenChange={setDetailsDialogOpen}>
         <DialogContent className="bg-goinft-dark border-goinft-light sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-center text-xl font-orbitron text-white">
-              Card Details
+              Detalhes do Card
             </DialogTitle>
           </DialogHeader>
           
@@ -505,32 +496,32 @@ const Marketplace = () => {
                 
                 <div className="grid grid-cols-2 gap-4 text-white/70 mb-6">
                   <div>
-                    <span className="block text-sm">Team</span>
+                    <span className="block text-sm">Time</span>
                     <span className="block text-white">{selectedCard.team}</span>
                   </div>
                   
                   <div>
-                    <span className="block text-sm">Position</span>
+                    <span className="block text-sm">Posição</span>
                     <span className="block text-white">{selectedCard.position}</span>
                   </div>
                   
                   <div>
-                    <span className="block text-sm">Rarity</span>
+                    <span className="block text-sm">Raridade</span>
                     <span className="block text-white capitalize">{selectedCard.rarity}</span>
                   </div>
                   
                   <div>
-                    <span className="block text-sm">Card ID</span>
+                    <span className="block text-sm">ID do Card</span>
                     <span className="block text-white">{selectedCard.id}</span>
                   </div>
                 </div>
                 
                 <div className="border-t border-goinft-light pt-4 mb-4">
-                  <div className="text-white/70 text-sm mb-2">Card Stats</div>
+                  <div className="text-white/70 text-sm mb-2">Estatísticas do Card</div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="flex justify-between">
-                        <span className="text-white">Pace</span>
+                        <span className="text-white">Velocidade</span>
                         <span className="text-white">92</span>
                       </div>
                       <div className="w-full bg-goinft-darker rounded-full h-1.5 mt-1">
@@ -540,7 +531,7 @@ const Marketplace = () => {
                     
                     <div>
                       <div className="flex justify-between">
-                        <span className="text-white">Shooting</span>
+                        <span className="text-white">Finalização</span>
                         <span className="text-white">95</span>
                       </div>
                       <div className="w-full bg-goinft-darker rounded-full h-1.5 mt-1">
@@ -550,7 +541,7 @@ const Marketplace = () => {
                     
                     <div>
                       <div className="flex justify-between">
-                        <span className="text-white">Passing</span>
+                        <span className="text-white">Passe</span>
                         <span className="text-white">88</span>
                       </div>
                       <div className="w-full bg-goinft-darker rounded-full h-1.5 mt-1">
@@ -560,7 +551,7 @@ const Marketplace = () => {
                     
                     <div>
                       <div className="flex justify-between">
-                        <span className="text-white">Dribbling</span>
+                        <span className="text-white">Drible</span>
                         <span className="text-white">97</span>
                       </div>
                       <div className="w-full bg-goinft-darker rounded-full h-1.5 mt-1">
@@ -573,7 +564,7 @@ const Marketplace = () => {
                 {'price' in selectedCard ? (
                   <div className="mt-6">
                     <div className="flex items-center mb-4">
-                      <span className="text-white/70 mr-2">Price:</span>
+                      <span className="text-white/70 mr-2">Preço:</span>
                       <span className="text-white text-xl font-bold font-orbitron">
                         {selectedCard.price} CHZ
                       </span>
@@ -582,7 +573,7 @@ const Marketplace = () => {
                     <Button 
                       className="w-full py-6 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-orbitron"
                     >
-                      Buy Now
+                      Comprar Agora
                     </Button>
                     
                     <Button 
@@ -590,7 +581,7 @@ const Marketplace = () => {
                       className="w-full mt-3 border-neon-purple text-white"
                       onClick={handleOpenTradeDialog}
                     >
-                      Offer Trade
+                      Oferecer Troca
                     </Button>
                   </div>
                 ) : (
@@ -598,14 +589,14 @@ const Marketplace = () => {
                     <Button 
                       className="w-full py-6 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-orbitron"
                     >
-                      Sell Card
+                      Vender Card
                     </Button>
                     
                     <Button 
                       variant="outline" 
                       className="w-full mt-3 border-neon-purple text-white"
                     >
-                      Use in Album
+                      Usar no Álbum
                     </Button>
                   </div>
                 )}
@@ -615,12 +606,11 @@ const Marketplace = () => {
         </DialogContent>
       </Dialog>
       
-      {/* Trade Dialog */}
       <Dialog open={tradeDialogOpen} onOpenChange={setTradeDialogOpen}>
         <DialogContent className="bg-goinft-dark border-goinft-light sm:max-w-3xl">
           <DialogHeader>
             <DialogTitle className="text-center text-xl font-orbitron text-white">
-              Propose Trade Offer
+              Propor Troca
             </DialogTitle>
           </DialogHeader>
           
@@ -628,7 +618,7 @@ const Marketplace = () => {
             <div>
               <div className="flex flex-col md:flex-row gap-4 items-center justify-center mb-6">
                 <div>
-                  <h3 className="text-center text-white/70 mb-2">You Get</h3>
+                  <h3 className="text-center text-white/70 mb-2">Você Recebe</h3>
                   <NFTCard 
                     {...selectedCard} 
                     onClick={() => {}} 
@@ -641,17 +631,17 @@ const Marketplace = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-center text-white/70 mb-2">You Give</h3>
+                  <h3 className="text-center text-white/70 mb-2">Você Oferece</h3>
                   <div className="w-full sm:w-48 aspect-[3/4] rounded-xl border-2 border-dashed border-goinft-light/40 bg-goinft-card/30 flex items-center justify-center">
                     <span className="text-white/50 text-center p-4">
-                      Select a card to offer
+                      Selecione um card para oferecer
                     </span>
                   </div>
                 </div>
               </div>
               
               <div className="mb-6">
-                <h3 className="text-white font-orbitron mb-3">Your Cards</h3>
+                <h3 className="text-white font-orbitron mb-3">Seus Cards</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                   {ownedCards.map((card) => (
                     <NFTCard 
@@ -669,10 +659,10 @@ const Marketplace = () => {
                   className="text-white"
                   onClick={() => setTradeDialogOpen(false)}
                 >
-                  Cancel
+                  Cancelar
                 </Button>
                 <Button className="bg-gradient-to-r from-neon-purple to-neon-pink text-white">
-                  Propose Trade
+                  Propor Troca
                 </Button>
               </div>
             </div>
