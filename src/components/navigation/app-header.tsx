@@ -24,9 +24,9 @@ export function AppHeader({
 
   const navigationLinks = [
     { name: "Dashboard", path: "/dashboard" },
-    { name: "Albums", path: "/albums" },
-    { name: "Marketplace", path: "/marketplace" },
-    { name: "Packs", path: "/packs" },
+    { name: "Álbuns", path: "/albums" },
+    { name: "Mercado", path: "/marketplace" },
+    { name: "Pacotes", path: "/packs" },
   ];
 
   return (

@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { WalletButton } from "@/components/ui/wallet-button";
 import { WalletConnectModal } from "@/components/ui/wallet-connect-modal";
 
@@ -14,12 +13,6 @@ const Welcome = () => {
     // In a real implementation, this would connect to the actual wallet
     // For demo purposes, we'll just navigate to the dashboard
     setWalletModalOpen(false);
-    navigate("/dashboard");
-  };
-
-  const handleCreateWallet = () => {
-    // This would open a flow to create a new wallet
-    // For demo purposes, we'll just navigate to the dashboard
     navigate("/dashboard");
   };
 
@@ -36,7 +29,7 @@ const Welcome = () => {
             GoINFT
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-md mx-auto">
-            Collect, trade, and play with digital football cards on the blockchain
+            Colecione, troque e jogue com cards digitais de futebol na blockchain
           </p>
         </div>
         
@@ -45,9 +38,9 @@ const Welcome = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">1</span>
             </div>
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Collect</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Colecionar</h3>
             <p className="text-white/70 text-sm">
-              Buy packs and collect rare NFT cards of your favorite players
+              Compre pacotes e colecione cards NFT raros dos seus jogadores favoritos
             </p>
           </div>
           
@@ -55,9 +48,9 @@ const Welcome = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">2</span>
             </div>
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Trade</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Trocar</h3>
             <p className="text-white/70 text-sm">
-              Trade cards with other collectors to complete your album
+              Troque cards com outros colecionadores para completar seu álbum
             </p>
           </div>
           
@@ -65,9 +58,9 @@ const Welcome = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-white">3</span>
             </div>
-            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Rewards</h3>
+            <h3 className="text-white font-orbitron text-lg font-bold mb-2">Recompensas</h3>
             <p className="text-white/70 text-sm">
-              Earn exclusive rewards by completing albums and collections
+              Ganhe recompensas exclusivas completando álbuns e coleções
             </p>
           </div>
         </div>
@@ -77,19 +70,12 @@ const Welcome = () => {
             className="flex-1 py-6 text-lg"
             onClick={() => setWalletModalOpen(true)}
           >
-            Connect Wallet
+            Conectar Carteira
           </WalletButton>
-          
-          <Button
-            className="flex-1 py-6 text-lg font-orbitron bg-goinft-light hover:bg-goinft-light/80 text-white"
-            onClick={handleCreateWallet}
-          >
-            Create Wallet
-          </Button>
         </div>
         
         <p className="text-white/50 text-sm mt-6 max-w-md text-center">
-          Powered by Chiliz Chain. Your digital collectibles are stored securely on the blockchain.
+          Desenvolvido com Chiliz Chain. Seus colecionáveis digitais são armazenados com segurança na blockchain.
         </p>
       </main>
       

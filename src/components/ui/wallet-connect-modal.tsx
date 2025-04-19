@@ -18,11 +18,11 @@ export function WalletConnectModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="bg-goinft-dark border-goinft-light sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-orbitron text-white">Connect your wallet</DialogTitle>
+          <DialogTitle className="text-center text-xl font-orbitron text-white">Conecte sua carteira</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <p className="text-center text-white/70 mb-2">
-            Connect with one of our available wallet providers to continue
+            Conecte-se com um dos nossos provedores de carteira disponíveis para continuar
           </p>
           
           <WalletButton 
@@ -42,7 +42,7 @@ export function WalletConnectModal({
           </WalletButton>
           
           <div className="mt-4 text-center text-xs text-white/50">
-            By connecting, you agree to the <span className="underline">Terms of Service</span> and <span className="underline">Privacy Policy</span>
+            Ao conectar, você concorda com os <span className="underline">Termos de Serviço</span> e <span className="underline">Política de Privacidade</span>
           </div>
         </div>
       </DialogContent>
