@@ -4,7 +4,6 @@ import { PackCard } from "@/components/ui/pack-card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { NFTCard } from "@/components/ui/nft-card";
-import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 
 // Updated pack data with Portuguese translations
 const packData = [
@@ -125,13 +124,6 @@ const Packs = () => {
 
   return (
     <div className="min-h-screen bg-goinft-dark pb-16">
-      {/* Hero Section */}
-      <HeroGeometric 
-        badge="GoINFT Cards" 
-        title1="Colecione Cards" 
-        title2="Dos seus Ídolos"
-      />
-      
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-white font-orbitron text-3xl font-bold">
@@ -221,3 +213,4 @@ const Packs = () => {
 };
 
 export default Packs;
+
