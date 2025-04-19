@@ -5,40 +5,40 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { NFTCard } from "@/components/ui/nft-card";
 
-// Mock data for packs
+// Updated pack data with Portuguese translations
 const packData = [
   {
     id: "1",
-    name: "Standard Pack",
-    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=StandardPack",
-    description: "Contains 5 random player cards",
+    name: "Pacote Padrão",
+    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=PacotePadr%C3%A3o",
+    description: "Contém 5 cartas de jogadores aleatórias",
     price: 10,
     cardsCount: 5,
     type: "common" as const,
   },
   {
     id: "2",
-    name: "Premium Pack",
-    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=PremiumPack",
-    description: "Higher chance of rare players",
+    name: "Pacote Premium",
+    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=PacotePremium",
+    description: "Maior chance de jogadores raros",
     price: 25,
     cardsCount: 5,
     type: "rare" as const,
   },
   {
     id: "3",
-    name: "World Cup Pack",
-    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=WorldCupPack",
-    description: "World Cup 2026 themed cards",
+    name: "Pacote América do Sul",
+    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=PacoteAmericaSul",
+    description: "Cartas temáticas da América do Sul",
     price: 30,
     cardsCount: 5,
     type: "themed" as const,
   },
   {
     id: "4",
-    name: "Legends Pack",
-    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=LegendsPack",
-    description: "Contains football legends cards",
+    name: "Pacote Lendas",
+    image: "https://placehold.co/800x600/1a1f2c/ffffff?text=PacoteLendas",
+    description: "Contém cartas de lendas do futebol",
     price: 50,
     cardsCount: 5,
     type: "themed" as const,
@@ -127,17 +127,17 @@ const Packs = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-white font-orbitron text-3xl font-bold">
-            Card Packs
+            Pacotes de Cartas
           </h1>
           <div className="bg-goinft-card px-4 py-2 rounded-lg text-white">
-            <span className="font-orbitron">Balance:</span>
+            <span className="font-orbitron">Saldo:</span>
             <span className="font-bold ml-2">100 CHZ</span>
           </div>
         </div>
         
         <p className="text-white/70 max-w-3xl mb-8">
-          Purchase packs to expand your collection. Each pack contains a random selection of player cards with varying rarities.
-          Open packs to reveal your new cards and add them to your collection.
+          Compre pacotes para expandir sua coleção. Cada pacote contém uma seleção aleatória de cartas de jogadores com raridades variadas. 
+          Abra pacotes para revelar suas novas cartas e adicioná-las à sua coleção.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -156,7 +156,7 @@ const Packs = () => {
         <DialogContent className="bg-goinft-dark border-goinft-light sm:max-w-3xl">
           <DialogHeader>
             <DialogTitle className="text-center text-xl font-orbitron text-white">
-              {openingPack ? "Opening Pack..." : "Your New Cards!"}
+              {openingPack ? "Abrindo Pacote..." : "Suas Novas Cartas!"}
             </DialogTitle>
           </DialogHeader>
           
@@ -213,3 +213,4 @@ const Packs = () => {
 };
 
 export default Packs;
+
