@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { NFTCard } from "@/components/ui/nft-card";
 import { AlbumCard } from "@/components/ui/album-card";
 import { PackCard } from "@/components/ui/pack-card";
+import { useWallet } from "@/hooks/use-wallet";
 
 // Mock data for dashboard
 const recentNFTs = [
@@ -78,7 +79,7 @@ const featuredPacks = [
 ];
 
 const Dashboard = () => {
-  const [walletBalance] = useState(100); // Mock wallet balance
+  const { isConnected, formattedAddress } = useWallet();
 
   return (
     <div className="min-h-screen bg-goinft-dark pb-16">
@@ -97,8 +98,9 @@ const Dashboard = () => {
             </p>
             
             <div className="inline-flex items-center gap-4 bg-goinft-card/50 backdrop-blur-sm rounded-lg py-2 px-4 border border-goinft-light/30 text-white">
-              <span className="font-orbitron">Saldo da Carteira:</span>
-              <span className="font-bold">{walletBalance} CHZ</span>
+              <span className="font-orbitron">
+                {isConnected ? `Carteira Conectada: ${formattedAddress}` : 'Carteira não conectada'}
+              </span>
             </div>
           </div>
 

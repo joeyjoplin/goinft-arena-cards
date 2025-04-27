@@ -1,19 +1,20 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WalletButton } from "@/components/ui/wallet-button";
 import { WalletConnectModal } from "@/components/ui/wallet-connect-modal";
+import { useWallet } from "@/hooks/use-wallet";
 
 const Welcome = () => {
   const navigate = useNavigate();
   const [walletModalOpen, setWalletModalOpen] = useState(false);
+  const { connectWallet } = useWallet();
 
-  const handleConnectWallet = (provider: string) => {
-    console.log(`Connecting with ${provider}`);
-    // In a real implementation, this would connect to the actual wallet
-    // For demo purposes, we'll just navigate to the dashboard
-    setWalletModalOpen(false);
-    navigate("/dashboard");
+  const handleConnectWallet = async (provider: string) => {
+    if (provider === "metamask") {
+      await connectWallet();
+      setWalletModalOpen(false);
+      navigate("/dashboard");
+    }
   };
 
   return (

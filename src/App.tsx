@@ -4,8 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import { AppLayout } from "@/components/layout/app-layout";
+import { useWallet } from "@/hooks/use-wallet";
 import Welcome from "@/pages/Welcome";
 import Dashboard from "@/pages/Dashboard";
 import Albums from "@/pages/Albums";
@@ -17,19 +17,13 @@ import NotFound from "@/pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState("");
-
-  const handleConnectWallet = () => {
-    // This would connect to the actual wallet in a real implementation
-    setIsConnected(true);
-    setWalletAddress("0x1234...5678");
-  };
-
-  const handleDisconnectWallet = () => {
-    setIsConnected(false);
-    setWalletAddress("");
-  };
+  const {
+    isConnected,
+    walletAddress,
+    formattedAddress,
+    connectWallet,
+    disconnectWallet
+  } = useWallet();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -39,9 +33,9 @@ const App = () => {
         <BrowserRouter>
           <AppLayout 
             isConnected={isConnected}
-            walletAddress={walletAddress}
-            onConnectWallet={handleConnectWallet}
-            onDisconnectWallet={handleDisconnectWallet}
+            walletAddress={formattedAddress}
+            onConnectWallet={connectWallet}
+            onDisconnectWallet={disconnectWallet}
           >
             <Routes>
               <Route path="/" element={<Welcome />} />
