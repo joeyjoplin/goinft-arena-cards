@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useToast } from "@/hooks/use-toast";
+import { getMoralisEthAddress } from '@/utils/moralis';
 
 declare global {
   interface Window {
@@ -11,6 +12,7 @@ declare global {
 export const useWallet = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
+  const [ethBalance, setEthBalance] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
   const { toast } = useToast();
 
@@ -55,14 +57,19 @@ export const useWallet = () => {
       }
 
       console.log("Requesting account access...");
-      // Request account access explicitly with ethereum.enable() for better compatibility
       try {
         const accounts = await ethereum.request({ 
           method: 'eth_requestAccounts' 
         });
         
-        console.log("Connected account:", accounts[0]);
-        setWalletAddress(accounts[0]);
+        const address = accounts[0];
+        console.log("Connected account:", address);
+        
+        // Get Moralis data for the connected address
+        const moralisData = await getMoralisEthAddress(address);
+        
+        setWalletAddress(address);
+        setEthBalance(moralisData.balance);
         setIsConnected(true);
         
         toast({
@@ -91,6 +98,7 @@ export const useWallet = () => {
 
   const disconnectWallet = () => {
     setWalletAddress('');
+    setEthBalance(null);
     setIsConnected(false);
     toast({
       title: "Carteira desconectada",
@@ -106,21 +114,22 @@ export const useWallet = () => {
   useEffect(() => {
     checkIfWalletIsConnected();
     
-    // Listen for account changes
     if (window.ethereum) {
-      window.ethereum.on('accountsChanged', (accounts: string[]) => {
+      window.ethereum.on('accountsChanged', async (accounts: string[]) => {
         if (accounts.length > 0) {
+          const moralisData = await getMoralisEthAddress(accounts[0]);
           setWalletAddress(accounts[0]);
+          setEthBalance(moralisData.balance);
           setIsConnected(true);
         } else {
           setWalletAddress('');
+          setEthBalance(null);
           setIsConnected(false);
         }
       });
     }
     
     return () => {
-      // Clean up listeners
       if (window.ethereum && window.ethereum.removeListener) {
         window.ethereum.removeListener('accountsChanged', () => {
           console.log('Accounts changed listener removed');
@@ -133,6 +142,7 @@ export const useWallet = () => {
     isConnected,
     isConnecting,
     walletAddress,
+    ethBalance,
     formattedAddress: formatAddress(walletAddress),
     connectWallet,
     disconnectWallet
