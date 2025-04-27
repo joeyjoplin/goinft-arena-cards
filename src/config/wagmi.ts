@@ -1,21 +1,25 @@
-// src/wagmiConfig.ts
-import { configureChains, createConfig } from 'wagmi';
-import { mainnet, sepolia } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
-import { injected } from 'wagmi/connectors';
 
-// Set up chains (you can add others too)
-const { chains, publicClient } = configureChains(
-  [mainnet, sepolia],
-  [publicProvider()]
-);
+import { createConfig, http } from 'wagmi'
+import { mainnet, sepolia } from 'wagmi/chains'
+import { injected, walletConnect } from 'wagmi/connectors'
 
-// Export the Wagmi config
-export const wagmiConfig = createConfig({
-  autoConnect: true,
+export const config = createConfig({
+  chains: [mainnet, sepolia],
   connectors: [
-    injected({ chains }),
+    injected(),
+    walletConnect({ 
+      projectId: 'YOUR_WALLETCONNECT_PROJECT_ID', 
+      showQrModal: true 
+    })
   ],
-  publicClient,
-});
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
+})
 
+declare module 'wagmi' {
+  interface Register {
+    config: typeof config
+  }
+}
