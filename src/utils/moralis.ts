@@ -1,8 +1,9 @@
 
-import Moralis from 'moralis/common-evm-utils';
+import Moralis from 'moralis';
+import { EvmChain } from '@moralisweb3/common-evm-utils';
 
 export const initializeMoralis = async () => {
-  if (!Moralis.Core.isStarted) {
+  if (!Moralis.start) {
     await Moralis.start({
       // We're using Moralis in client-side only mode for now
       // This means we don't need an API key yet
@@ -18,7 +19,7 @@ export const getMoralisEthAddress = async (ethereumAddress: string) => {
     // Get native (ETH) balance using Moralis
     const nativeBalance = await Moralis.EvmApi.balance.getNativeBalance({
       address: ethereumAddress,
-      chain: 0x1, // Ethereum mainnet
+      chain: EvmChain.ETHEREUM,
     });
 
     return {
