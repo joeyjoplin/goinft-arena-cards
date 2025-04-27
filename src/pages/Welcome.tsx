@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { WalletButton } from "@/components/ui/wallet-button";
@@ -7,7 +8,7 @@ import { useWallet } from "@/hooks/use-wallet";
 const Welcome = () => {
   const navigate = useNavigate();
   const [walletModalOpen, setWalletModalOpen] = useState(false);
-  const { connectWallet } = useWallet();
+  const { connectWallet, isConnecting } = useWallet();
 
   const handleConnectWallet = async (provider: string) => {
     if (provider === "metamask") {
@@ -70,8 +71,9 @@ const Welcome = () => {
           <WalletButton
             className="flex-1 py-6 text-lg"
             onClick={() => setWalletModalOpen(true)}
+            disabled={isConnecting}
           >
-            Conectar Carteira
+            {isConnecting ? "Conectando..." : "Conectar Carteira"}
           </WalletButton>
         </div>
         
@@ -84,6 +86,7 @@ const Welcome = () => {
         open={walletModalOpen}
         onClose={() => setWalletModalOpen(false)}
         onConnect={handleConnectWallet}
+        isConnecting={isConnecting}
       />
     </div>
   );
