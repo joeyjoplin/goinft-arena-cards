@@ -1,5 +1,5 @@
 
-import Moralis from 'moralis';
+import Moralis from 'moralis/common-evm-utils';
 
 export const initializeMoralis = async () => {
   if (!Moralis.Core.isStarted) {
