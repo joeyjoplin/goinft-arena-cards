@@ -28,6 +28,7 @@ export function AppHeader({
     { name: "Mercado", path: "/marketplace" },
     { name: "Pacotes", path: "/packs" },
     { name: "Lab de Álbuns", path: "/album-lab" },
+    { name: "Votação", path: "/album-voting" },
   ];
 
   return (
@@ -144,4 +145,4 @@ export function AppHeader({
       </div>
     </header>
   );
-}
+};
