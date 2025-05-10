@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bell, Menu, X } from "lucide-react";
@@ -29,6 +28,7 @@ export function AppHeader({
     { name: "Pacotes", path: "/packs" },
     { name: "Lab de Álbuns", path: "/album-lab" },
     { name: "Votação", path: "/album-voting" },
+    { name: "Desafios", path: "/challenges" }, 
   ];
 
   return (
