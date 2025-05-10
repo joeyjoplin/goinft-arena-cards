@@ -1,26 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { 
-  Badge, 
-  Button, 
-  Input, 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger,
-  Card,
-  CardContent,
-} from "@/components/ui";
-import { 
-  TrendingUp, 
-  Clock, 
-  ThumbsUp, 
-  Trophy, 
-  Search, 
-  Filter, 
-  Check,
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { TrendingUp, Clock, Trophy, Search, Filter, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ChallengeCard } from "@/components/challenge/challenge-card";
 import { SubmissionCard } from "@/components/challenge/submission-card";
@@ -77,7 +62,7 @@ export default function CreativeChallenges() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [teams, setTeams] = useState<{id: string, name: string, logo: string, isVerified: boolean}[]>([]);
 
-  // Mock data - in a real app, this would come from an API
+  // Effect to load mock data
   useEffect(() => {
     // Mock teams
     const mockTeams = [
