@@ -27,6 +27,7 @@ export function AppHeader({
     { name: "Álbuns", path: "/albums" },
     { name: "Mercado", path: "/marketplace" },
     { name: "Pacotes", path: "/packs" },
+    { name: "Lab de Álbuns", path: "/album-lab" },
   ];
 
   return (

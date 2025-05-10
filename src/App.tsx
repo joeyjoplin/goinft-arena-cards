@@ -12,6 +12,7 @@ import Dashboard from "@/pages/Dashboard";
 import Albums from "@/pages/Albums";
 import Marketplace from "@/pages/Marketplace";
 import Packs from "@/pages/Packs";
+import AlbumLab from "@/pages/AlbumLab";
 import Profile from "@/pages/Profile";
 import NotFound from "@/pages/NotFound";
 
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/albums" element={<Albums />} />
                 <Route path="/marketplace" element={<Marketplace />} />
                 <Route path="/packs" element={<Packs />} />
+                <Route path="/album-lab" element={<AlbumLab />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
