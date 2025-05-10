@@ -18,8 +18,8 @@ export const useWallet = () => {
     } catch (error) {
       console.error('Error connecting wallet:', error)
       toast({
-        title: "Connection Error",
-        description: "There was an error trying to connect your wallet.",
+        title: "Erro ao conectar",
+        description: "Ocorreu um erro ao tentar conectar sua carteira.",
         variant: "destructive",
       });
     }
@@ -28,8 +28,8 @@ export const useWallet = () => {
   const disconnectWallet = () => {
     disconnect()
     toast({
-      title: "Wallet Disconnected",
-      description: "Your wallet has been successfully disconnected.",
+      title: "Carteira desconectada",
+      description: "Sua carteira foi desconectada com sucesso.",
     });
   };
 
